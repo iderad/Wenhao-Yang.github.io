@@ -1,89 +1,746 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wenhao Yang — Portfolio</title>
-  <meta name="description" content="Personal website and portfolio of Wenhao Yang." />
-  <meta property="og:title" content="Wenhao Yang — Portfolio" />
-  <meta property="og:description" content="Projects, writing, and contact." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://example.com/" />
-  <meta property="og:image" content="assets/og-image.png" />
-  <link rel="icon" href="assets/favicon.png" />
-  <link rel="preload" href="assets/hero.jpg" as="image" />
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wenhao Yang - Web Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Fjalla+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #991b1b;
+            --secondary-color: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #d1d5db;
+            --accent-color: #7f1d1d;
+            --background-dark: #0a0a0a;
+            --background-darker: #050505;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background: var(--background-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(153, 27, 27, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--background-darker) 0%, var(--secondary-color) 100%);
+            padding: 0;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header h1 {
+            font-family: 'Fjalla One', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .header .container {
+            padding: 2rem 20px;
+        }
+
+        .header .subheading {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .button-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .button-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Section */
+        section {
+            padding: 8rem 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-secondary {
+            background: var(--secondary-color);
+            border-top: 1px solid #2a2a2a;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .eyebrow {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Fjalla One', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--secondary-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #2a2a2a;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(153, 27, 27, 0.4);
+            border: 1px solid var(--primary-color);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .tag-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .faq-item {
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--primary-color);
+            background: var(--background-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(153, 27, 27, 0.3);
+        }
+
+        .faq-item h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-section .container {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.125rem;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(153, 27, 27, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(153, 27, 27, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--background-darker);
+            color: white;
+            padding: 3rem 0 1rem;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links h4 {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .social-links a {
+            color: #d1d5db;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 4rem 0;
+                min-height: auto;
+            }
+
+            .header {
+                min-height: 100vh;
+                padding: 2rem 0;
+            }
+
+            .cta-section {
+                min-height: auto;
+                padding: 4rem 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="site-header">
-    <a href="#" class="logo">WY</a>
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#writing">Writing</a>
-      <a href="#contact" class="cta">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero__content">
-        <h1>Hey, I'm <span class="accent">Wenhao</span>.</h1>
-        <p class="lead">I build creative tools, multiplayer web apps, drawing modles.</p>
-        <div class="hero__cta">
-          <a class="button" href="#projects">See my projects</a>
-          <a class="button button--ghost" href="assets/WenhaoYang_Resume.pdf">Download resume</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>🚀</span>
+                <span>Wenhao Yang</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="btn">Download CV</a>
         </div>
-      </div>
-      <picture class="hero__img">
-        <img src="assets/hero.jpg" alt="Wenhao working at a laptop" width="640" height="480" loading="eager" />
-      </picture>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1>Hello,<br>it's Wenhao Yang</h1>
+            <p class="subheading">Web Developer</p>
+            <div class="button-group">
+                <a href="#projects" class="button button-primary">See Projects</a>
+                <a href="#about" class="button button-secondary">View Resume</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>I'm a senior at Temple University majoring in Computer Science with a certificate in Japanese. I'm passionate about creating intuitive, user-friendly software, and I'm always eager to keep learning and improving across all areas of technology. I have a strong interest in game development and enjoy exploring how creativity and code come together to build an experience that is useful for everyone.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="about" class="section">
-      <h2>About</h2>
-      <p>
-        I'm a CS student and builder focused on React/TypeScript, Node/Express, Socket.IO, and Unity.
-      </p>
+    <!-- Featured Projects Section -->
+    <section id="projects" class="section-secondary">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Featured highlights</p>
+                <h2>Showcasing work and experience</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <a href="#" class="project-card">
+                    <div class="project-image">📄</div>
+                    <div class="project-content">
+                        <div class="tag-group">
+                            <span class="tag">Resume</span>
+                            <span class="project-date">Updated May 2024</span>
+                        </div>
+                        <h3 class="project-title">Professional Background</h3>
+                        <p class="project-description">Overview of my professional experience, skills, and achievements in software development.</p>
+                    </div>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="#" class="project-card">
+                    <div class="project-image">🎨</div>
+                    <div class="project-content">
+                        <div class="tag-group">
+                            <span class="tag">Project</span>
+                            <span class="project-date">Sept 2025 - Dec 2025</span>
+                        </div>
+                        <h3 class="project-title">Sketch to Screen</h3>
+                        <p class="project-description">AI-powered collaborative web application that transforms hand-drawn sketches into functional UI components and production-ready code.<br><br><strong>Role:</strong> Front-End Developer</p>
+                    </div>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="#" class="project-card">
+                    <div class="project-image">💳</div>
+                    <div class="project-content">
+                        <div class="tag-group">
+                            <span class="tag">Freelance</span>
+                            <span class="project-date">Dec 2025 - Jan 2026</span>
+                        </div>
+                        <h3 class="project-title">TabletPOS</h3>
+                        <p class="project-description">Point of Sale Android application with Bluetooth thermal printer integration, order management, and customizable menu templates.<br><br><strong>Role:</strong> Sole Developer</p>
+                    </div>
+                </a>
+
+                <!-- Project 4 -->
+                <a href="#" class="project-card">
+                    <div class="project-image">🎮</div>
+                    <div class="project-content">
+                        <div class="tag-group">
+                            <span class="tag">Project</span>
+                            <span class="project-date">March 2025 - April 2025</span>
+                        </div>
+                        <h3 class="project-title">Trench Coat</h3>
+                        <p class="project-description">A client-server web application where multiple users can simultaneously guess designs in real-time. Developed using WebSocket protocols.<br><br><strong>Role:</strong> Full-Stack Developer</p>
+                    </div>
+                </a>
+            </div>
+        </div>
     </section>
 
-    <section id="projects" class="section">
-      <h2>Projects</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Skreeble.io</h3>
-          <p>Real-time multiplayer drawing & guessing game with Socket.IO and React.</p>
-          <a class="link" href="#" target="_blank" rel="noopener">Live</a>
-          <a class="link" href="#" target="_blank" rel="noopener">Source</a>
-        </article>
-        <article class="card">
-          <h3>Sketch → UI Code</h3>
-          <p>AI pipeline from freehand sketches to responsive UI code using TypeScript & Python.</p>
-          <a class="link" href="#" target="_blank" rel="noopener">Demo</a>
-          <a class="link" href="#" target="_blank" rel="noopener">Paper</a>
-        </article>
-      </div>
+    <!-- FAQ Section -->
+    <section id="faq" class="section-secondary">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Frequently Asked Questions</p>
+                <h2>Get the Information You Need</h2>
+                <p>Explore answers about my experience, expertise, and ways to reach out.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What is your experience?</h3>
+                    <p>I have a background in software development, project management, and UI/UX design, working on both solo and team projects.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Which languages do you use?</h3>
+                    <p>I mainly use TypeScript, JavaScript, Python, Kotlin, and work with frameworks like React and Node.js.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Where can I see your work?</h3>
+                    <p>Visit the portfolio section for project details and my role in each project.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are you available for new work?</h3>
+                    <p>Yes, I am open to full-time, freelance, and collaborative opportunities. Contact me for details.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I reach you?</h3>
+                    <p>Use the contact form below to reach out directly. I typically reply within two business days.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What are you working on now?</h3>
+                    <p>I'm building a productivity web app and exploring mobile development with Kotlin.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>
-        Best way to reach me: <a href="mailto:iderad123@gmail.com">iderad123@gmail.com</a>
-      </p>
-      <ul class="social">
-        <li><a href="https://github.com/yourname" rel="me">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/yourname/" rel="me">LinkedIn</a></li>
-      </ul>
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Explore my portfolio and connect</h2>
+            <p>Discover my skills and ongoing projects</p>
+            <a href="mailto:Iderad123@gmail.com" class="cta-button">Contact Me</a>
+        </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <small>© <span id="year"></span> Wenhao Yang. All rights reserved.</small>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <span style="font-size: 2rem;">🚀</span>
+                        <span style="font-size: 1.25rem; font-weight: bold;">Wenhao Yang</span>
+                    </div>
+                </div>
+                <div>
+                    <ul class="footer-links">
+                        <li><h4>Resume</h4></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="footer-links">
+                        <li><h4>Projects</h4></li>
+                        <li><a href="#projects">Portfolio</a></li>
+                        <li><a href="#projects">Gallery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="footer-links">
+                        <li><h4>Connect</h4></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color: #9ca3af;">&copy; 2026 Wenhao Yang. All rights reserved.</p>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <script>
+        // Smooth scrolling for anchor links with faster, more reactive behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition - 80; // Offset for fixed nav
+                    const duration = 600; // Faster scroll duration
+                    let start = null;
+                    
+                    // Easing function for smoother, more reactive scroll
+                    const easeInOutCubic = (t) => {
+                        return t < 0.5 
+                            ? 4 * t * t * t 
+                            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    };
+                    
+                    const animation = (currentTime) => {
+                        if (start === null) start = currentTime;
+                        const timeElapsed = currentTime - start;
+                        const progress = Math.min(timeElapsed / duration, 1);
+                        const ease = easeInOutCubic(progress);
+                        
+                        window.scrollTo(0, startPosition + distance * ease);
+                        
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    };
+                    
+                    requestAnimationFrame(animation);
+                }
+            });
+        });
+
+        // Scroll reveal animation for project cards and FAQ items - works every time
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Element is entering viewport - show it
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                } else {
+                    // Element is leaving viewport - hide it again
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards and FAQ items
+        document.querySelectorAll('.project-card, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
